@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Currency Conversion</h1>
+
+    <form action="/convert-currency" method="post">
+        <label for="fromCurrencyId">From Currency:</label>
+        <select name="fromCurrencyId" id="fromCurrencyId">
+            <c:forEach items="${currencies}" var="currency">
+                <option value="${currency.id}">${currency.name}</option>
+            </c:forEach>
+        </select>
+        <br>
+        
+        <label for="toCurrencyId">To Currency:</label>
+        <select name="toCurrencyId" id="toCurrencyId">
+            <c:forEach items="${currencies}" var="currency">
+                <option value="${currency.id}">${currency.name}</option>
+            </c:forEach>
+        </select>
+        <br>
+
+        <label for "amount">Amount:</label>
+        <input type="text" name="amount" id="amount">
+        <br>
+        
+        <input type="submit" value="Convert">
+    </form>
+
+    <c:if test="${result ne null}">
+        <p class="result">Conversion Result: ${result}</p>
+    </c:if>
+</body>
+</html>

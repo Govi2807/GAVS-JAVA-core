@@ -1,0 +1,84 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long booking_id;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Car car;
+
+    private LocalDate bookingDate;
+    private double distanceTraveled;
+    private double totalAmount;
+
+    // Constructors
+
+    public Booking() {
+    }
+
+    public Booking(User user, Car car, LocalDate bookingDate, double distanceTraveled, double totalAmount) {
+        this.user = user;
+        this.car = car;
+        this.bookingDate = bookingDate;
+        this.distanceTraveled = distanceTraveled;
+        this.totalAmount = totalAmount;
+    }
+
+    // Getters and setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public double getDistanceTraveled() {
+        return distanceTraveled;
+    }
+
+    public void setDistanceTraveled(double distanceTraveled) {
+        this.distanceTraveled = distanceTraveled;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+}

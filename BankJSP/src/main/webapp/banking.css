@@ -1,0 +1,76 @@
+@charset "ISO-8859-1";/* Reset some default styles to have a clean slate */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light gray background */
+}
+
+/* Style the header */
+h1 {
+    text-align: center;
+    margin: 20px;
+    color: #333;
+    font-size: 24px; /* Larger font size */
+}
+
+/* Style the forms */
+form {
+    text-align: center;
+    margin: 20px;
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Slightly larger shadow */
+}
+
+/* Style form labels and input fields */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555; /* Dark gray labels */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style buttons */
+input[type="submit"] {
+    background-color: rgb(128, 128, 128); /* Blue button */
+    color: #fff;
+    padding: 12px 24px; /* Larger button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Style links */
+a {
+    text-decoration: none;
+    color: #007BFF; /* Blue links */
+}
+
+/* Style success and error messages */
+.success-message {
+    color: #4CAF50; /* Green success message */
+    margin: 10px 0;
+}
+
+.error-message {
+    color: #FF0000; /* Red error message */
+    margin: 10px 0;
+}

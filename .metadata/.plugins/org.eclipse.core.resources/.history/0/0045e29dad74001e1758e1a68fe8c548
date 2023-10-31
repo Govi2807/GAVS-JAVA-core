@@ -1,0 +1,36 @@
+package com.example.demo.service;
+
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Booking;
+import com.example.demo.model.Car;
+import com.example.demo.model.User;
+import com.example.demo.repositories.BookingRepository;
+
+@Service
+public class BookingService {
+    @Autowired
+    private BookingRepository bookingRepository;
+    
+
+    public List<Booking> getAllProducts(){
+		List<Booking> products=new ArrayList<Booking>();
+		bookingRepository.findAll().forEach(products::add);
+		return products;
+	}
+	public Product getProduct(int id) {
+		return repository.findById(id).get();
+	}
+	public void addProduct( Product prd) {
+		repository.save(prd);
+		
+	}
+	public void deleteProduct(int id) {
+		Product prd=repository.findById(id).get();
+		System.out.println(prd);
+		repository.deleteById(id);
+	}
+}

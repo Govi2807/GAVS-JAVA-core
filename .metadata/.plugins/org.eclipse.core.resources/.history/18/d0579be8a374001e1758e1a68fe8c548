@@ -1,0 +1,31 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class BookingController {
+    @Autowired
+    private CarService carService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private BookingService bookingService;
+
+    @GetMapping("/book")
+    public String showBookingForm(Model model) {
+        model.addAttribute("booking", new Booking());
+        List<Car> cars = carService.getAllCars();
+        model.addAttribute("cars", cars);
+        return "booking-form";
+    }
+
+    @PostMapping("/book")
+    public String bookCar(@ModelAttribute("booking") Booking booking) {
+        User user = userService.getCurrentUser(); // Implement user authentication
+        booking.setUser(user);
+        bookingService.bookCar(booking);
+        // Redirect to a booking confirmation page or user dashboard
+        return "redirect:/user/dashboard";
+    }
+}

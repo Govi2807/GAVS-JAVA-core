@@ -1,0 +1,94 @@
+package com.example.demo.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Car {
+    @Id
+    private Long car_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String type;
+    
+    
+    private String vehicle_name;
+    private String fuel;
+    private int capacity;
+    private double rentper_Day;
+    private double rateper_km;
+
+    // Constructors
+
+    public Car() {
+    }
+
+    public Car(Long car_id,String type,String vehicle_name, String fuel, int capacity,double rentper_Day, double rateper_km) {
+    	this.car_id= car_id;
+    	this.type = type;
+        this.vehicle_name = vehicle_name;
+        this.fuel = fuel;
+        this.capacity = capacity;
+        this.rentper_day = rentper_day;
+        this.rateper_km = rateper_km;
+    }
+
+    // Getters and setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getVehicleType() {
+        return vehicle_name;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicle_name = vehicleType;
+    }
+
+    public String getVehicleName() {
+        return vehicleName;
+    }
+
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
+    }
+
+    public String getFuelRequired() {
+        return fuelRequired;
+    }
+
+    public void setFuelRequired(String fuelRequired) {
+        this.fuelRequired = fuelRequired;
+    }
+
+    public int getSeatingCapacity() {
+        return seatingCapacity;
+    }
+
+    public void setSeatingCapacity(int seatingCapacity) {
+        this.seatingCapacity = seatingCapacity;
+    }
+
+    public double getRentPerDay() {
+        return rentper_Day;
+    }
+
+    public void setRentPerDay(double rentPerDay) {
+        this.rentper_Day = rentPerDay;
+    }
+
+    public double getRatePerKm() {
+        return rateper_km;
+    }
+
+    public void setRatePerKm(double ratePerKm) {
+        this.rateper_km = ratePerKm;
+    }
+}

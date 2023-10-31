@@ -1,0 +1,54 @@
+package com.example.demo.controller;
+ 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+ 
+import com.example.demo.model.Booking;
+import com.example.demo.model.Car;
+import com.example.demo.service.BookingService;
+
+ 
+ 
+@RestController
+public class BookingController {
+	@Autowired
+    BookingService service;
+	@GetMapping("/bookedcar")
+	public List<Booking> getBookingDetails() {
+	return service.getAllProducts();
+	}
+	
+	@GetMapping("/bookedcar/{id}")
+		public Booking getBookingDetails(@PathVariable("id") int id ){
+			return service.getProduct(id);
+		}
+	
+	@PostMapping("/addBooking")
+	public String addProduct(@RequestBody Booking prd) {
+		System.out.println(prd);
+		service.addProduct(prd);
+		return "Added successfully";
+	}
+	
+	@DeleteMapping("/deleteBooking/{id}")
+	public String deleteProduct(@PathVariable("id") int id) {
+		service.deleteProduct(id);
+		return "Deleted";
+	}
+	
+	@PutMapping("/booking/{itemId}")
+    public ResponseEntity<Booking> updateItem(@PathVariable int itemId, @RequestBody Booking updatedItem) {
+        Booking updated = service.updateItem(itemId, updatedItem);
+        return ResponseEntity.ok(updated);
+    }
+ 
+}

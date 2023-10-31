@@ -1,0 +1,5 @@
+package com.example.demo.repositories;
+
+public interface BookingRepository extends CrudRepository<Booking, Long> {
+    // Add custom query methods if needed
+}

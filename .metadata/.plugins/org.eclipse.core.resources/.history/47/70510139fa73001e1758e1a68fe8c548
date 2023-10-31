@@ -1,0 +1,33 @@
+package com.example.demo.controller;
+
+import com.example.demo.model.Product;
+import com.example.demo.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class ProductController {
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping("/products")
+    public String listProducts(Model model) {
+        // Retrieve and send a list of products to the view
+        return "product/list";
+    }
+
+    @GetMapping("/products/add")
+    public String addProductForm() {
+        // Return a form to add a new product
+        return "product/add";
+    }
+
+    @PostMapping("/products/add")
+    public String addProduct(Product product) {
+        // Save the product to the database
+        return "redirect:/products";
+    }
+}

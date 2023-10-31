@@ -1,0 +1,36 @@
+package com.example.demo.service;
+
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Booking;
+import com.example.demo.model.Car;
+import com.example.demo.model.User;
+import com.example.demo.repositories.BookingRepository;
+
+@Service
+public class BookingService {
+    @Autowired
+    private BookingRepository bookingRepository;
+    @Autowired
+    private CarService carService;
+
+    public Booking bookCar(User user, Car car, LocalDate bookingDate, double distanceTraveled) {
+        double ratePerKm = car.getRatePerKm();
+        double rentPerDay = car.getRentPerDay();
+        
+        double totalAmount = (rentPerDay + (ratePerKm * distanceTraveled));
+        
+        Booking booking = new Booking();
+        booking.setUser(user);
+        booking.setCar(car);
+        booking.setBookingDate(bookingDate);
+        booking.setDistanceTraveled(distanceTraveled);
+        booking.setTotalAmount(totalAmount);
+        
+        return bookingRepository.save(booking);
+    }
+    // Implement other booking-related methods
+}

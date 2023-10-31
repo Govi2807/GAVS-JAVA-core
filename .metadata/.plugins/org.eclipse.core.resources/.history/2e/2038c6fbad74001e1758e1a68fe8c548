@@ -1,0 +1,27 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.demo.model.Booking;
+import com.example.demo.model.User;
+import com.example.demo.service.BookingService;
+import com.example.demo.service.CarService;
+import com.example.demo.service.UserService;
+
+@Controller
+public class BookingController {
+    @Autowired
+    private BookingService bookingService;
+
+    @PostMapping("/addProduct")
+	public String addProduct(@RequestBody Product prd) {
+		System.out.println(prd);
+		service.addProduct(prd);
+		return "Added successfully";
+	}
+}
