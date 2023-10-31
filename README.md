@@ -1,0 +1,1 @@
+# GAVS-JAVA-core
